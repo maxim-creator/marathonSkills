@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Новый бегун</title>
+</head>
+<body>
+<div>
+    <a th:href="@{runner}">Назад</a>
+    <h2>MARATHON SKILLS 2016</h2>
+</div>
+<div>
+    <h2>Регистрация бегуна</h2>
+    <p>Пожалуйста заполните всю информацию, чтобы зарегестрироваться в качастве бегуна</p>
+    <form method="post" th:action="@{/runner}" th:object="${runner}">
+        <label for="name">Имя</label>
+        <input type="text" th:field="*{name}" id="name"/>
+        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+        <br/>
+        <br/>
+
+        <label for="secondName">Фамилия</label>
+        <input type="text" th:field="*{secondName}" id="secondName"/>
+        <div th:if="${#fields.hasErrors('secondName')}" th:errors="*{secondName}"></div>
+        <br/>
+        <br/>
+
+        <label for="email">Email</label>
+        <input type="email" th:field="*{email}" id="email">
+        <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+        <br/>
+        <br/>
+
+        <label for="birthday">Дата рождения</label>
+        <input th:type="text" th:field="*{birthday}" id="birthday"/>
+        <div th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}"></div>
+        <br/>
+        <br/>
+
+
+        <label for="password">Пароль</label>
+        <input type="password" th:field="*{password}" id="password"/>
+        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+        <br/>
+        <br/>
+
+        <input type="submit" value="Зарегестрироваться!">
+
+    </form>
+</div>
+
+</body>
+</html>
